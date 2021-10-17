@@ -2,10 +2,7 @@ package com.lulu.mybatis.repo.mapper;
 
 
 import com.lulu.mybatis.repo.StudentScore;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
 import java.util.List;
@@ -32,5 +29,12 @@ public interface StudentScoreMapper {
     })
     @ResultMap("all_column")
     List<StudentScore> selectByName(String name);
+
+    @Select({
+            "select * from student_score where class_no =#{classNo, jdbcType=VARCHAR}",
+            "and score > #{score, jdbcType=VARCHAR}"
+    })
+    @ResultMap("all_column")
+    List<StudentScore> selectByClassNoAndScore(@Param("classNo") String classNo, @Param("score") Integer score);
 }
 

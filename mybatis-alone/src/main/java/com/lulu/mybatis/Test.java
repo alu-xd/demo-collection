@@ -24,7 +24,7 @@ public class Test {
 
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             StudentScoreMapper mapper = sqlSession.getMapper(StudentScoreMapper.class);
-            List<StudentScore> studentScores = mapper.selectByName("zhangsan");
+            List<StudentScore> studentScores = mapper.selectByClassNoAndScore("06", 60);
 
             for (StudentScore studentScore : studentScores) {
                 System.out.println("name=" + studentScore.getName());
