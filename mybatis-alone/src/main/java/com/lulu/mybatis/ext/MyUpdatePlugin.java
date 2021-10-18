@@ -10,14 +10,14 @@ import java.util.Properties;
         type= Executor.class,
         method = "update",
         args = {MappedStatement.class,Object.class})})
-public class DemoPlugin implements Interceptor {
+public class MyUpdatePlugin implements Interceptor {
     private Properties properties = new Properties();
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
-        System.out.println("##############before update: " + invocation.getMethod());
+        System.out.println("before update: " + properties.getProperty("before"));
         Object returnObject = invocation.proceed();
-        System.out.println("##############after update: " + invocation.getMethod());
+        System.out.println("after update: " + properties.getProperty("after"));
         return returnObject;
     }
 

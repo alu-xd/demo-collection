@@ -5,7 +5,10 @@
 <configuration>
     <!--    配置文件是有顺序的，plugins放到mapper后面就会报错-->
         <plugins>
-            <plugin interceptor="com.lulu.mybatis.ext.DemoPlugin"></plugin>
+            <plugin interceptor="com.lulu.mybatis.ext.MyUpdatePlugin">
+                <property name="before" value="beforeProp"/>
+                <property name="after" value="afterProp"/>
+            </plugin>
         </plugins>
     <environments default="development">
         <environment id="development">

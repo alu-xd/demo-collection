@@ -41,5 +41,11 @@ public interface StudentScoreMapper {
             "update student_score set score = #{score, jdbcType=INTEGER} where name = #{name, jdbcType=VARCHAR}"
     })
     int updateScore(@Param("name") String name, @Param("score") Integer score);
+
+    @Update({
+            "update student_score set score = #{score, jdbcType=INTEGER} where name = #{name, jdbcType=VARCHAR}",
+            "and class_no =#{classNo, jdbcType=VARCHAR}"
+    })
+    int updateScoreByNameClassNo(@Param("name") String name, @Param("classNo")String classNo, @Param("score") Integer score);
 }
 

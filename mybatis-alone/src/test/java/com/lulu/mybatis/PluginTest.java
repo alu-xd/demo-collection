@@ -42,4 +42,14 @@ public class PluginTest {
             assertEquals(1, result);
         }
     }
+
+    @Test
+    public  void testMutilParamUpdate() {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            StudentScoreMapper mapper = sqlSession.getMapper(StudentScoreMapper.class);
+            int result = mapper.updateScoreByNameClassNo("zhangsan","01", 100);
+            System.out.println("update result: "+result);;
+            assertEquals(1, result);
+        }
+    }
 }
