@@ -36,5 +36,10 @@ public interface StudentScoreMapper {
     })
     @ResultMap("all_column")
     List<StudentScore> selectByClassNoAndScore(@Param("classNo") String classNo, @Param("score") Integer score);
+
+    @Update({
+            "update student_score set score = #{score, jdbcType=INTEGER} where name = #{name, jdbcType=VARCHAR}"
+    })
+    int updateScore(@Param("name") String name, @Param("score") Integer score);
 }
 
